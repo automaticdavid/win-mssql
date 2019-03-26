@@ -146,7 +146,7 @@
     SQLUserDBLogDir: "{{ mssql_sqluserlog_path }}"
     SQLTempDBDir: "{{ mssql_sqltempDB_path }}"
     SQLTempDBLogDir: "{{ mssql_sqltempDBlog_path }}"
-    Features: "{{ mssql_features }}"
+    # Features: "{{ mssql_features }}"
     SQLCollation: "{{ mssql_collation }}"
     BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
     SuppressReboot: "{{ mssql_suppress_reboot }}"
