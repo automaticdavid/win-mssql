@@ -88,6 +88,32 @@
   delegate_to: "{{ domain_controller }}"
   tags: service_account
 
+- name: Local Computer | Ensure SQL Service account is present
+  win_user:
+    name: "{{ mssql_sqlsvc_account | regex_search('[^\\\\]*$') }}"
+    fullname: "{{ mssql_instance_name }} - SQLSvc"
+    password: "{{ mssql_sqlsvc_account_pass }}"
+    password_never_expires: yes
+    user_cannot_change_password: yes
+    description: "SQL Local Service account for {{ inventory_hostname }}\\{{ mssql_instance_name }}"
+    state: present
+    groupss
+      - Administrators
+  tags: local_service_account
+
+- name: Local Computer | Ensure SQL Agent Service account is present
+  win_user:
+    name: "{{ mssql_agentsvc_account | regex_search('[^\\\\]*$') }}"
+    fullname: "{{ mssql_instance_name }} - AgentSvc"
+    password: "{{ mssql_sqlsvc_account_pass }}"
+    password_never_expires: yes
+    user_cannot_change_password: yes
+    description: "SQL Local Agent account for {{ inventory_hostname }}\\{{ mssql_instance_name }}"
+    state: present
+    groupss
+      - Administrators
+  tags: local_service_account
+
 # SQL install may fail if a pending reboot is detected
 # Assuming we are allowed to reboot this step will check for pending reboots
 # and execute a reboot, reboot activity can be controlled using the variable mssql_suppress_reboot
