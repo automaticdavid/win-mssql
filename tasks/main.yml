@@ -97,7 +97,7 @@
     user_cannot_change_password: yes
     description: "SQL Local Service account for {{ inventory_hostname }}\\{{ mssql_instance_name }}"
     state: present
-    groupss
+    groups:
       - Administrators
   tags: local_service_account
 
@@ -110,7 +110,7 @@
     user_cannot_change_password: yes
     description: "SQL Local Agent account for {{ inventory_hostname }}\\{{ mssql_instance_name }}"
     state: present
-    groupss
+    groups:
       - Administrators
   tags: local_service_account
 
@@ -172,7 +172,7 @@
     SQLUserDBLogDir: "{{ mssql_sqluserlog_path }}"
     SQLTempDBDir: "{{ mssql_sqltempDB_path }}"
     SQLTempDBLogDir: "{{ mssql_sqltempDBlog_path }}"
-    # Features: "{{ mssql_features }}"
+    Features: "{{ mssql_features }}"
     SQLCollation: "{{ mssql_collation }}"
     BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
     SuppressReboot: "{{ mssql_suppress_reboot }}"
