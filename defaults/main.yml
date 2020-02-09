@@ -1,7 +1,8 @@
 # installation files source 
 #mssql_installation_source: https://go.microsoft.com/fwlink/?linkid=853016
 # 2019:
-mssql_installation_source: https://go.microsoft.com/fwlink/?linkid=866662
+# mssql_installation_source: https://go.microsoft.com/fwlink/?linkid=866662
+mssql_installation_source: https://go.microsoft.com/fwlink/?linkid=866658
 
 # Path to download installation media to
 mssql_installation_path: C:\SQLInstall
