@@ -126,11 +126,11 @@
     name: "{{ mssql_temp_download_path }}"
     state: directory
  
-- name: Fetch SQL Media Downloader
-  win_get_url:
-    url: "{{ mssql_installation_source }}"
-    dest: "{{ mssql_temp_download_path }}\\SQLServer.exe"
-  when: need_dl |bool 
+# - name: Fetch SQL Media Downloader
+#  win_get_url:
+#    url: "{{ mssql_installation_source }}"
+#    dest: "{{ mssql_temp_download_path }}\\SQLServer.exe"
+#  when: need_dl |bool 
 
 
 - name: Use Media Downloader to fetch SQL Installation CABs to {{ mssql_installation_path }}
