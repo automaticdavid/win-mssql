@@ -63,7 +63,7 @@
     - name: Use Media Downloader to fetch SQL Installation CABs to {{ mssql_installation_path }}
       win_shell: "{{ mssql_temp_download_path }}\\SQLServer2017-SSEI-Dev.exe /Action=Download /MediaPath={{ mssql_installation_path }} /MediaType=CAB /Quiet"
 
-  when: need_prereqs
+  when: need_prereqs|bool
 
 # Setup service accounts
 #
@@ -84,7 +84,7 @@
       - Domain Users
   tags: service_account
   delegate_to: "{{ domain_controller }}"
-  when:  use_domain_account
+  when:  use_domain_account|bool
   
 - name: Active Directory | Ensure SQL Agent Service account is present
   win_domain_user:
@@ -101,7 +101,7 @@
       - Domain Users
   delegate_to: "{{ domain_controller }}"
   tags: service_account
-  when:  use_domain_account
+  when:  use_domain_account|bool
 
 - name: Ensure SQL Service account is present
   win_user:
@@ -114,7 +114,7 @@
     groups:
       - Administrators
   tags: service_account
-  when:  use_local_account
+  when:  use_local_account|bool
   
 - name: Ensure SQL Agent Service account is present
   win_user:
@@ -127,7 +127,7 @@
     groups:
       - Administrators
   tags: service_account
-  when:  use_local_account
+  when:  use_local_account|bool
 
 # SQL install may fail if a pending reboot is detected
 # Assuming we are allowed to reboot this step will check for pending reboots
