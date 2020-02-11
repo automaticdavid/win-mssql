@@ -192,6 +192,7 @@
     SQLCollation: "{{ mssql_collation }}"
     BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
     SuppressReboot: "{{ mssql_suppress_reboot }}"
+    SecurityMode: SQL
     # Service Accounts
     #
     # If the type of the DSC resource option is a PSCredential then 
